@@ -73,6 +73,62 @@ public:
 
         delete (temp);
     }
+    
+    void insert_at_n(int data,int loc)
+    {
+        Node *temp = new Node();
+        temp->data = data;
+        temp->next = NULL;
+
+        if(loc == 1)
+        {
+            temp->next = head;
+            head = temp;
+            cout<<"Node inserted successfulyy!"<<endl;
+            return;
+        }
+
+        Node *curNode = head;
+        for(int i=1;i<loc-1;i++)
+        {
+            curNode = curNode -> next;
+            if(curNode == NULL)
+            {
+                cout<<"Please enter proper location!"<<endl;
+                return;
+            }
+        }
+        
+        temp->next = curNode -> next;
+        curNode->next = temp;
+        cout<<"Node inserted successfulyy!"<<endl;
+    }
+    
+	void delete_at_n(int loc)
+        {
+            Node *temp = head;
+            if(loc == 1)
+            {
+                head = temp -> next;
+                delete(temp);
+                cout<<"\nNode deleted Successfully!";
+                return;
+            }
+            for(int i=1;i<loc-1;i++)
+            {
+                
+                temp = temp -> next;  
+                if(temp == NULL || temp->next == NULL)
+                {
+                    cout<<"Please enter proper location!!!!!"<<endl;
+                    return;
+                }              
+            }
+            Node *temp2 = temp -> next; //nth node
+            temp->next = temp2->next; //n+1 node
+            delete(temp2);
+            cout<<"\nNode deleted Successfully!"<<endl;
+        }
 
     void print_list()
     {
