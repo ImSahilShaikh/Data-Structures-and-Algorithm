@@ -114,7 +114,7 @@ public:
                 cout<<"\nNode deleted Successfully!";
                 return;
             }
-            for(int i=1;i<loc-1;i++)
+            for(int i=1;i<loc-1;i++) // got to n-1 th node
             {
                 
                 temp = temp -> next;  
@@ -125,7 +125,7 @@ public:
                 }              
             }
             Node *temp2 = temp -> next; //nth node
-            temp->next = temp2->next; //n+1 node
+            temp->next = temp2->next; // n-1 node -> n+1 node
             delete(temp2);
             cout<<"\nNode deleted Successfully!"<<endl;
         }

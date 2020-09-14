@@ -50,6 +50,6 @@ int main()
     {
         cout<<x<<"\t";
     }
-
+    cout<<s[3];
     return 0;
 }

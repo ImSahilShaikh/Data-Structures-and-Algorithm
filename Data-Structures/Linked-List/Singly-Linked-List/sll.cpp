@@ -24,6 +24,14 @@ int accept_data()
     return temp;
 }
 
+void print_usingrecursion(Node *head)
+{
+    if(head == nullptr)
+        return;
+    cout<<head->data<<"\t";
+    print_usingrecursion(head->next);
+}
+
 Node* insert_node(Node *head)
 {
     Node *temp = new Node;
@@ -77,6 +85,32 @@ Node *insert_at_first(Node *head)
     return head;
 }
 
+void print_reverse(Node *head)
+{
+    if(head == nullptr)
+    {
+        return;
+    }
+    print_reverse(head->next);
+    cout<<head->data<<"\t";
+}
+
+Node* reverse(Node *head)
+{
+    Node *cur = head;
+    if(cur == nullptr)
+    {
+        head = cur;
+    }
+    else
+    {   
+        reverse(cur -> next);
+        Node * tmp = cur->next;
+        tmp->next = cur;
+        cur->next = nullptr;
+    }
+    return cur;
+}
 
 int main()
 {
@@ -92,12 +126,22 @@ int main()
     head = insert_node(head);
     printlist(head);
     
-    head = delete_last_node(head);
-    printlist(head);
+    // head = delete_last_node(head);
+    // printlist(head);
     
-    head = delete_first_node(head);
-    printlist(head);
+    // head = delete_first_node(head);
+    // printlist(head);
 
     head = insert_at_first(head);
+    printlist(head);
+
+    cout<<"\n-------------Printing using recursion-------------"<<endl;
+    print_usingrecursion(head);
+
+    cout<<"\n-------------Printing using recursion in reverse-------------"<<endl;
+    print_reverse(head);
+
+    cout<<"\n-------------Reversing LL using recursion-------------"<<endl;
+    head = reverse(head);
     printlist(head);
 }
